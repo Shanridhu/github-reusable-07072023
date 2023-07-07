@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - uses: actions/checkout@v3    
     - name: Use Java Maven Workflow Template
       uses: Shanridhu/github-action-maven-example-start@main
       with:
