@@ -7,36 +7,25 @@ on:
         required: true
 
  
-  #push:
-    #branches:
-      #- master
-
 env:
   JAVA_VERSION: '17' 
-  SONAR_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
-  SONAR_HOST_URL: ${{ secrets.SONARQUBE_HOST }}
+  #SONAR_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
+  #SONAR_HOST_URL: ${{ secrets.SONARQUBE_HOST }}
       
 jobs:
   build:
     name: java ci sonar build
     runs-on: ubuntu-latest
-    #permissions:
-     # contents: read
-      #packages: write
       
     steps:
       - name: Checkout from Repo
         uses: actions/checkout@v3
-        #with:
-         # fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
           
       - name: Setup Java Sdk ${{ env.JAVA_VERSION }}
         uses: actions/setup-java@v3
         with:
           java-version: ${{ env.JAVA_VERSION }}
           distribution: 'temurin'
-          #server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
-          #settings-path: ${{ github.workspace }} # location for the settings.xml file
           
       - name: Cache SonarQube packages
         uses: actions/cache@v3
